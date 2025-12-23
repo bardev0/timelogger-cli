@@ -5,7 +5,6 @@ import { session_status } from './cmds/session_status';
 import { stats } from './cmds/stats';
 import { dic } from './dictionary';
 
-
 const home = Bun.env.HOME;
 export const configFolder = '/.config/timelogger/';
 const configFile = 'tl.json';
@@ -39,18 +38,17 @@ if (await configuration.exists()) {
 
     switch (args) {
         case cmds.start:
-			start()
-			break;
-		case cmds.end:
-			end()
-			break
-		case cmds.status:
-			session_status()
-			break
-		case cmds.stats:
-			stats()
-			break
-			
+            start();
+            break;
+        case cmds.end:
+            end();
+            break;
+        case cmds.status:
+            session_status();
+            break;
+        case cmds.stats:
+            stats();
+            break;
     }
 } else {
     console.log(dic.missingConfFike);

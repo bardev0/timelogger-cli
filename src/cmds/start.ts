@@ -1,5 +1,5 @@
-import { dic } from "../dictionary";
+import { dic } from '../dictionary';
 
 export function start() {
-	console.log(`${dic.cmd_start}`);
-	}
+    console.log(`${dic.cmd_start}`);
+}
