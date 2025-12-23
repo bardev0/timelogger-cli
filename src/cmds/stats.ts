@@ -1,5 +1,4 @@
-import { dic } from '../dictionary';
-
+import { dic } from '../index';
 export function stats() {
     console.log(`${dic.cmd_stats}`);
 }

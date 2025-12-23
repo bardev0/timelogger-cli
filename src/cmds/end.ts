@@ -1,4 +1,4 @@
-import { dic } from '../dictionary';
+import { dic } from '../index';
 
 export function end() {
     console.log(`${dic.cmd_end}`);

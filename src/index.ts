@@ -3,7 +3,6 @@ import { start } from './cmds/start';
 import { end } from './cmds/end';
 import { session_status } from './cmds/session_status';
 import { stats } from './cmds/stats';
-import { dic } from './dictionary';
 
 const home = Bun.env.HOME;
 export const configFolder = '/.config/timelogger/';
@@ -11,6 +10,7 @@ const configFile = 'tl.json';
 const confPath = home + configFolder + configFile;
 const configuration = Bun.file(confPath);
 
+// commands -> args for cli for different functions
 const cmds = {
     start: 'start',
     end: 'end',
@@ -18,7 +18,18 @@ const cmds = {
     stats: 'stats',
 };
 
-let settings: TConfig;
+export const dic = {
+    confFileExists: 'Configuration File Exists',
+    missingConfFike: 'Configuration File not found',
+    promptCreateConfig: `Would u like to create a default configuration file ? (y/n) : `,
+    creatingConf: `Creating configuration file in ${configFolder}`,
+    cmd_start: 'starting',
+    cmd_end: 'ending',
+    cmd_session_status: 'session status here',
+    cmd_stats: 'statistics',
+};
+
+export let settings: TConfig;
 
 // check for configuration file
 // if conf is present read conf and continue operations
@@ -38,7 +49,7 @@ if (await configuration.exists()) {
 
     switch (args) {
         case cmds.start:
-            start();
+            start(settings);
             break;
         case cmds.end:
             end();
@@ -70,7 +81,3 @@ if (await configuration.exists()) {
         break;
     }
 }
-
-// read conf
-
-// commands -> args for cli for different functions
