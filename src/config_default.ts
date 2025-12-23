@@ -1,11 +1,17 @@
+import os from 'os';
+
 export type TConfig = {
-	defugConfMsg: boolean,
+    defugConfMsg: boolean;
     serverIP: string;
     serverPort: number;
+    clientName: string;
+    userName: string;
 };
 
 export const defaultConfig: TConfig = {
-	defugConfMsg: true,
+    clientName: os.hostname(),
+    userName: os.userInfo().username,
+    defugConfMsg: true,
     serverIP: '127.0.0.1',
     serverPort: 7000,
 };

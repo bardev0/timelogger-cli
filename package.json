@@ -4,7 +4,7 @@
     "type": "module",
     "scripts": {
         "dev": "bun run src/index.ts",
-        "buildCLI": "bun build ./src/index.ts --compile --outfile ./dist/mycl",
+        "build-cli": "bun build ./src/index.ts --compile --outfile ./dist/tl",
         "format": "prettier --config prettierrc.json --write ."
     },
     "private": true,
