@@ -7,7 +7,7 @@ import { stats } from './cmds/stats';
 const home = Bun.env.HOME;
 export const configFolder = '/.config/timelogger/';
 const configFile = 'tl.json';
-const confPath = home + configFolder + configFile;
+export const confPath = home + configFolder + configFile;
 const configuration = Bun.file(confPath);
 
 // commands -> args for cli for different functions
@@ -35,32 +35,6 @@ export let settings: TConfig;
 // if conf is present read conf and continue operations
 if (await configuration.exists()) {
     settings = await import(confPath);
-
-    // debug message that conf exisist -> can turn off in config file
-    if (settings.defugConfMsg) {
-        console.log(dic.confFileExists);
-    }
-
-    // debug of settings
-    //console.log(settings);
-
-    // MAIN LOOP
-    const args = process.argv.slice(2)[0];
-
-    switch (args) {
-        case cmds.start:
-            start(settings);
-            break;
-        case cmds.end:
-            end();
-            break;
-        case cmds.status:
-            session_status();
-            break;
-        case cmds.stats:
-            stats();
-            break;
-    }
 } else {
     console.log(dic.missingConfFike);
     process.stdout.write(dic.promptCreateConfig);
@@ -81,3 +55,25 @@ if (await configuration.exists()) {
         break;
     }
 }
+
+function main() {
+    const args = process.argv.slice(2)[0];
+
+    console.log(settings);
+    switch (args) {
+        case cmds.start:
+            start(settings);
+            break;
+        case cmds.end:
+            end();
+            break;
+        case cmds.status:
+            session_status();
+            break;
+        case cmds.stats:
+            stats(settings);
+            break;
+    }
+}
+
+main();
