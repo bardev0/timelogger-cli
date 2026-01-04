@@ -11,7 +11,7 @@ export async function start(settings: TConfig) {
         client: settings.clientName,
     };
 
-    console.log(newSession);
+//    console.log(newSession);
 
     // add path form source of truth
     let sPath = `http://${settings.serverIP}:${settings.serverPort}/new_open_session`;
@@ -24,4 +24,5 @@ export async function start(settings: TConfig) {
         headers: { 'Content-Type': 'application/json' },
     });
     const body = await response.json();
+	console.log(body)
 }
