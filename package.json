@@ -1,17 +1,21 @@
 {
-    "name": "timelogger-cli",
-    "module": "src/index.ts",
-    "type": "module",
-    "scripts": {
-        "dev": "bun run src/index.ts",
-        "build-cli": "bun build ./src/index.ts --compile --outfile ./dist/tl",
-        "format": "prettier --config prettierrc.json --write ."
-    },
-    "private": true,
-    "devDependencies": {
-        "@types/bun": "latest"
-    },
-    "peerDependencies": {
-        "typescript": "^5"
-    }
+  "name": "timelogger-cli",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run src/index.ts",
+    "build-cli": "bun build ./src/index.ts --compile --outfile ./dist/tl",
+    "format": "prettier --config prettierrc.json --write ."
+  },
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "timielogger-types": "../timelogger-types"
+  },
+  "version": "0.1.1"
 }

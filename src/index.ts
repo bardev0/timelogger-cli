@@ -4,6 +4,8 @@ import { end } from './cmds/end';
 import { session_status } from './cmds/session_status';
 import { stats } from './cmds/stats';
 
+import type { testTYPE } from 'timielogger-types';
+
 const home = Bun.env.HOME;
 export const configFolder = '/.config/timelogger/';
 const configFile = 'tl.json';
@@ -12,6 +14,7 @@ const configuration = Bun.file(confPath);
 
 // commands -> args for cli for different functions
 const cmds = {
+    debug: 'debug',
     start: 'start',
     end: 'end',
     status: 'status',
@@ -65,7 +68,7 @@ function main() {
             start(settings);
             break;
         case cmds.end:
-            end();
+            end(settings);
             break;
         case cmds.status:
             session_status();
@@ -73,6 +76,11 @@ function main() {
         case cmds.stats:
             stats(settings);
             break;
+        case cmds.debug:
+            let test: testTYPE = {
+                testType: 'testy typow',
+            };
+            console.log(test);
     }
 }
 
